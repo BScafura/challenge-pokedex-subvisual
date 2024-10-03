@@ -40,7 +40,7 @@ This project was developed using React, a powerful JavaScript library for buildi
 </div>
   
 
-- **Discover New Species**: Use the navigation buttons to explore and discover more Pokémon species 🐵🐶🐺🐱🦁🐯🦊🐹🐭🐷🐮🐻🐨🐼🐸.
+- **Discover New Species**: Use the navigation buttons to explore and discover more Pokémon species 🐵🐺🦁🐯🦊🐭🐮🐻🐨🐼🐸.
 <div align="center">
 
 ![pokemoncard2](https://github.com/user-attachments/assets/c8d3e145-b7ee-46df-b3e7-b9d6b688ead6)
