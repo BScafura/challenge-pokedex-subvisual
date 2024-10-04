@@ -36,6 +36,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .loader {
@@ -457,27 +459,69 @@ body {
 }
 
 .control-btn-previous {
+  border-radius: 10px; /* Button corner rounding */
+  color: black; /* Button text color */
+  height: 70px; /* Button height */
+  width: 70px; /* Button width */
+  position: relative; /* Positioning context for ::before */
+  border: none; /* No default border */
+  z-index: 1; /* Ensure button is above the pseudo-element */
+}
+
+.control-btn-previous::before {
+  content: ""; /* Required for pseudo-elements */
+  position: absolute; /* Position relative to the button */
+  top: 0; /* Align to top */
+  left: 0; /* Align to left */
+  right: 0; /* Align to right */
+  bottom: 0; /* Align to bottom */
   border-radius: 10px;
-  background-color: red;
-  color: black;
-  height: 70px;
-  width: 70px;
+  background-image: linear-gradient(
+    var(--rotate),
+    #da3f3f,
+    #d30d0d 43%,
+    #dc0707
+  );
+  z-index: -1;
+  animation: spin 2.5s linear infinite;
+  transition: opacity 0.3s;
 }
 
 .control-btn-previous:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
 .control-btn-next {
+  border-radius: 10px; /* Button corner rounding */
+  color: black; /* Button text color */
+  height: 70px; /* Button height */
+  width: 70px; /* Button width */
+  position: relative; /* Positioning context for ::before */
+  border: none; /* No default border */
+  z-index: 1; /* Ensure button is above the pseudo-element */
+}
+
+.control-btn-next::before {
+  content: ""; /* Required for pseudo-elements */
+  position: absolute; /* Position relative to the button */
+  top: 0; /* Align to top */
+  left: 0; /* Align to left */
+  right: 0; /* Align to right */
+  bottom: 0; /* Align to bottom */
   border-radius: 10px;
-  background-color: green;
-  color: black;
-  height: 70px;
-  width: 70px;
+  background-image: linear-gradient(
+    var(--rotate),
+    #88ff5d,
+    #3ce360 43%,
+    #00c26e
+  );
+  z-index: -1;
+  animation: spin 2.5s linear infinite;
+  transition: opacity 0.3s;
 }
 
 .control-btn-next:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
 .footer {
@@ -487,4 +531,22 @@ body {
   padding-bottom: 0;
   bottom: 0;
   width: 100%;
+}
+
+@keyframes control-btn-next-spin {
+  0% {
+    --rotate: 0deg;
+  }
+  100% {
+    --rotate: 360deg;
+  }
+}
+
+@keyframes control-btn-previous-spin {
+  0% {
+    --rotate: 0deg;
+  }
+  100% {
+    --rotate: 360deg;
+  }
 }

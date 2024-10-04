@@ -14,6 +14,7 @@ export function Pokemon({
     return (
       <div className="loader-wrapper">
         <div className="loader"></div>
+        <p>Now Loading...</p>
       </div>
     );
   }
