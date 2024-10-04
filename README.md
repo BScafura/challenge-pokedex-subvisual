@@ -23,7 +23,8 @@ This project was developed using React, a powerful JavaScript library for buildi
 
 <div align="center">
 
-![pokemoncard](https://github.com/user-attachments/assets/6e5463cd-e87b-45cf-8251-ac8d4eea0907)
+
+![search](https://github.com/user-attachments/assets/3e72a390-d083-480e-806d-d9fa28bc1268)
 
 
 </div>
