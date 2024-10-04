@@ -1,6 +1,6 @@
 # Welcome to the Subvisual Pokedex 📲
 
-This project was developed using React, a powerful JavaScript library for building user interfaces, as part of a challenge for the 2024 Apprenticeship Program. Leveraging the strengths of JavaScript, we aimed to build an interactive and dynamic Pokédex experience, showcasing our skills in modern web development. To fetch all the data we also used <a href="https://pokeapi.co/">pokeapi.co</a>. It's basically a single page application that renders data stored in the API and show it to the user in a friendly and fun experience. I hope you like it as much as I enjoyed building it 😁✌️!
+This project was developed using React, a powerful JavaScript library for building user interfaces, as part of a challenge for the 2024 Apprenticeship Program. Leveraging the strengths of JavaScript, we aimed to build an interactive and dynamic Pokédex experience, showcasing our skills in modern web development. To fetch all the data we also used <a href="https://pokeapi.co/">pokeapi.co</a>. It's basically a dynamic single-page web application (SPA)  that deliver information stored in the respective Pokémon API and show it to the user in a friendly and fun experience. I hope you like it as much as I enjoyed building it 😁✌️!
 
 # Running 🚀
 - Before start
