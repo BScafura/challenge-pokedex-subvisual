@@ -1,9 +1,22 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-export function Pokemon({ pokemon, handleSubmit, setDetailedPokemon }) {
+export function Pokemon({
+  pokemon,
+  handleSubmit,
+  setDetailedPokemon,
+  loading,
+}) {
   const formatName = (name) => {
     return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
   };
+
+  if (loading) {
+    return (
+      <div className="loader-wrapper">
+        <div className="loader"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="search-container">

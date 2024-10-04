@@ -31,6 +31,31 @@ body {
   height: 50px;
 }
 
+.loader-wrapper {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-radius: 50%;
+  border-top: 16px solid #4b4c4e; /* Blue */
+  width: 120px;
+  height: 120px;
+  animation: loader-spin 2s linear infinite; /* Apply the renamed animation */
+}
+
+@keyframes loader-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .tile-container {
   display: flex;
   flex-wrap: wrap;
