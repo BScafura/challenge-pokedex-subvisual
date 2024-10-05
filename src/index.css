@@ -200,9 +200,9 @@ body {
   border-radius: 8px;
   background-image: linear-gradient(
     var(--rotate),
-    #5dffe4,
-    #3c67e3 43%,
-    #afc200
+    #db0c66,
+    #fbfbfb 43%,
+    #ff0000
   );
   position: absolute;
   z-index: -1;
@@ -221,13 +221,18 @@ body {
 }
 
 .card {
-  background-color: #fff;
+  background-image: url("../public/cardbackground.jpg");
+  background-size: cover;
+  background-position: center 55%;
+  background-repeat: no-repeat;
+  background-color: white;
   border-radius: 30px;
   padding: 15px;
   list-style: none;
   margin: 10px;
-  min-width: 331px;
-  min-height: 150px;
+  min-width: 340px;
+  min-height: 177px;
+  max-width: 340px;
   color: rgb(88 199 250 / 0%);
   cursor: pointer;
   position: relative;
@@ -331,6 +336,12 @@ body {
 .fairy {
   background-color: #f8cfd5;
   color: #664147;
+}
+
+.pokemon-abilities {
+  margin: 5px;
+  background: red;
+  border-radius: 20px;
 }
 
 .search-container {

@@ -3,6 +3,8 @@ import {
   faMagnifyingGlass,
   faSquareCaretLeft,
   faSquareCaretRight,
+  faRulerVertical,
+  faWeightHanging,
 } from "@fortawesome/free-solid-svg-icons";
 
 export function DetailedPokemon({
@@ -59,31 +61,46 @@ export function DetailedPokemon({
             </p>
           </div>
         </div>
-        <div style={{ marginBottom: 10 }} className="pokemon-text">
-          <h2 className="pokemon-detailed-name">
+        <div
+          style={{ marginBottom: 10, textAlignLast: "center" }}
+          className="pokemon-text"
+        >
+          <h2 className="pokemon-detailed-name" style={{ marginBottom: 10 }}>
             {formatName(detailedPokemon.name)}
           </h2>
-          <div className="pokemon-characteristics">
+          <div
+            className="pokemon-characteristics"
+            style={{ display: "flex", gap: 10, justifyContent: "center" }}
+          >
             <p>
-              <strong>Height:</strong> {detailedPokemon.height} decimeters
+              <FontAwesomeIcon icon={faRulerVertical}></FontAwesomeIcon>{" "}
+              {detailedPokemon.height} dm
             </p>
             <p>
-              <strong>Weight:</strong> {detailedPokemon.weight} hectograms
-            </p>
-            <p>
-              <strong>Abilities:</strong>{" "}
-              {detailedPokemon.abilities.map((ability, index) => (
-                <span key={index}>{ability.ability.name}</span>
-              ))}
+              <FontAwesomeIcon icon={faWeightHanging}></FontAwesomeIcon>{" "}
+              {detailedPokemon.weight} hg
             </p>
           </div>
+          <p>
+            <strong style={{ fontSize: 20 }}>Abilities:</strong>{" "}
+            {detailedPokemon.abilities.map((ability, index) => (
+              <p className="pokemon-abilities" key={index}>
+                {ability.ability.name}
+              </p>
+            ))}
+          </p>
           <div className="stats-container">
-            <p style={{ marginBottom: 0, fontWeight: "bold" }}>Basic Stats:</p>
+            <p style={{ marginBottom: 0, fontWeight: "bold", fontSize: 20 }}>
+              Basic Stats:
+            </p>
             {detailedPokemon.stats.map((stat, index) => (
               <div className="stats-number" key={index}>
                 <p style={{ margin: 0 }}>
-                  {stat.stat.name}: {stat.base_stat}
+                  <strong>{stat.stat.name}</strong> : {stat.base_stat}
                 </p>
+                <div className="progress-bar" dataStats={stat.stat.name}>
+                  <progress value={stat.base_stat} max={"200"}></progress>
+                </div>
               </div>
             ))}
           </div>
