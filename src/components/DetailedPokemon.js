@@ -12,13 +12,16 @@ export function DetailedPokemon({
   nextPokemon,
   previousPokemon,
   pokemon,
+  currentGlobalIndex,
+  allPokemon,
+  filteredPokemon, // Make sure to pass filteredPokemon as a prop
 }) {
   const formatName = (name) => {
     return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
   };
+
   return (
     <div className="search-container">
-      {" "}
       <form className="form" onSubmit={handleSubmit}>
         <div className="search-bar">
           <div className="search-box">
@@ -43,8 +46,7 @@ export function DetailedPokemon({
               src={detailedPokemon.sprites?.front_default}
               alt={detailedPokemon.name}
             />
-            <p className="pokemon-label">{formatName(detailedPokemon.name)}</p>{" "}
-            {/* Label for normal form */}
+            <p className="pokemon-label">{formatName(detailedPokemon.name)}</p>
           </div>
           <div className="image-container">
             <img
@@ -54,7 +56,7 @@ export function DetailedPokemon({
             />
             <p className="pokemon-label">
               Shiny {formatName(detailedPokemon.name)}
-            </p>{" "}
+            </p>
           </div>
         </div>
         <div style={{ marginBottom: 10 }} className="pokemon-text">
@@ -76,13 +78,11 @@ export function DetailedPokemon({
             </p>
           </div>
           <div className="stats-container">
-            <p style={{ marginBottom: 0, fontWeight: "bold" }}>Basic Stats:</p>{" "}
+            <p style={{ marginBottom: 0, fontWeight: "bold" }}>Basic Stats:</p>
             {detailedPokemon.stats.map((stat, index) => (
-              <div className="stats-number">
-                <p style={{ margin: 0 }} key={index}>
-                  {stat.stat.name}
-                  {": "}
-                  {stat.base_stat}
+              <div className="stats-number" key={index}>
+                <p style={{ margin: 0 }}>
+                  {stat.stat.name}: {stat.base_stat}
                 </p>
               </div>
             ))}
@@ -90,18 +90,10 @@ export function DetailedPokemon({
         </div>
       </div>
       <div className="control-buttons">
-        <button
-          onClick={previousPokemon}
-          disabled={currentIndex === 0}
-          className="control-btn-previous"
-        >
+        <button onClick={previousPokemon} className="control-btn-previous">
           <FontAwesomeIcon icon={faSquareCaretLeft}></FontAwesomeIcon>
         </button>
-        <button
-          onClick={nextPokemon}
-          disabled={currentIndex === pokemon.length - 1}
-          className="control-btn-next"
-        >
+        <button onClick={nextPokemon} className="control-btn-next">
           <FontAwesomeIcon icon={faSquareCaretRight}></FontAwesomeIcon>
         </button>
       </div>

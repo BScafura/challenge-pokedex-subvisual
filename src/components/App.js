@@ -4,6 +4,7 @@ import { Header } from "./Header";
 import { Title } from "./Title";
 import { DetailedPokemon } from "./DetailedPokemon";
 import { Footer } from "./Footer";
+import { Pagination } from "./Pagination";
 
 function App() {
   // States
@@ -13,6 +14,7 @@ function App() {
   const [detailedPokemon, setDetailedPokemon] = useState(null); // State to store more detailed Pokemon information
   const [currentIndex, setCurrentIndex] = useState(0); // State to store the current index for filtering Pokemon
   const [currentPage, setCurrentPage] = useState(1); // State to store the current page for paginatio
+  const [currentGlobalIndex, setCurrentGlobalIndex] = useState(0);
   const [pokemonPerPage, setPokemonPerPage] = useState(30); // State to store the number of Pokémon per pages
   const [music, setMusic] = useState(true); // Music state
 
@@ -78,8 +80,8 @@ function App() {
 
   // Handle form submission and filtering
   async function handleSubmit(event) {
-    event.preventDefault();
-    await setDetailedPokemon(null);
+    event.preventDefault(); // Prevent the default form submission behavior
+    await setDetailedPokemon(null); // Reset detailed Pokémon information
     const formData = new FormData(event.target); // Get form data
     const searchTerm = formData.get("pokemon").toLowerCase(); // Get the search term and make it lowercase for comparison
 
@@ -88,33 +90,58 @@ function App() {
       const filteredList = allPokemon.filter((poke) =>
         poke.name.toLowerCase().includes(searchTerm)
       );
+
       if (filteredList.length > 0) {
         // If there are matching Pokémon, fetch their details
-        await getDetailedPokemon(filteredList);
+        await getDetailedPokemon(filteredList); // Fetch detailed data for filtered Pokémon
+
+        // Set the current index and global index based on the first matching Pokémon
+        const firstMatch = filteredList[0]; // Get the first matching Pokémon
+        const globalIndex = allPokemon.findIndex(
+          (poke) => poke.name === firstMatch.name
+        ); // Find its index in the global dataset
+        setCurrentGlobalIndex(globalIndex); // Set the global index to the first match
+        setCurrentIndex(0); // Reset the current index for filtered Pokémon
       } else {
         // If no matching Pokémon, show an alert
         alert("There is no such Pokémon in our database!");
       }
     } else {
-      // If no search term (empty search), show all Pokémon
-      await getDetailedPokemon(allPokemon);
+      // Reset indices for an empty search (show all Pokémon)
+      setCurrentIndex(0); // Reset filtered index
+      setCurrentGlobalIndex(0); // Reset global index
+      await getDetailedPokemon(allPokemon); // Fetch detailed data for all Pokémon
     }
   }
 
   // Function to go to the next Pokémon
   const nextPokemon = async () => {
-    if (currentIndex < filteredPokemon.length - 1) {
-      setCurrentIndex(currentIndex + 1);
-      setDetailedPokemon(filteredPokemon[currentIndex + 1]);
+    if (currentGlobalIndex < allPokemon.length - 1) {
+      const nextGlobalIndex = currentGlobalIndex + 1; // Move to the next Pokémon in the global list
+      setCurrentGlobalIndex(nextGlobalIndex); // Update the global index
+      const nextPokemonDetails = await fetchPokemonDetails(
+        allPokemon[nextGlobalIndex].url
+      ); // Fetch the next Pokémon
+      setDetailedPokemon(nextPokemonDetails); // Update the detailed Pokémon
     }
   };
 
-  // Function to go to the previous Pokémon
   const previousPokemon = async () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
-      setDetailedPokemon(filteredPokemon[currentIndex - 1]);
+    if (currentGlobalIndex > 0) {
+      const prevGlobalIndex = currentGlobalIndex - 1; // Move to the previous Pokémon in the global list
+      setCurrentGlobalIndex(prevGlobalIndex); // Update the global index
+      setCurrentIndex((prevIndex) => prevIndex - 1); // Update current index for filtered Pokémon
+      const prevPokemonDetails = await fetchPokemonDetails(
+        allPokemon[prevGlobalIndex].url
+      ); // Fetch the previous Pokémon
+      setDetailedPokemon(prevPokemonDetails); // Update the detailed Pokémon
     }
+  };
+
+  // Function to fetch Pokémon details by URL
+  const fetchPokemonDetails = async (url) => {
+    const res = await fetch(url);
+    return await res.json();
   };
 
   // Function to handle change page event
@@ -159,6 +186,9 @@ function App() {
           nextPokemon={nextPokemon}
           previousPokemon={previousPokemon}
           currentIndex={currentIndex}
+          currentGlobalIndex={currentGlobalIndex}
+          allPokemon={allPokemon}
+          filteredPokemon={filteredPokemon} // Pass the filtered list
         />
       ) : (
         <>
@@ -179,36 +209,6 @@ function App() {
 
       <Footer></Footer>
     </div>
-  );
-}
-
-function Pagination({ pokemonPerPage, totalPokemon, paginate }) {
-  const pageNumbers = [];
-
-  for (let i = 1; i <= Math.ceil(totalPokemon / pokemonPerPage); i++) {
-    pageNumbers.push(i);
-  }
-
-  return (
-    <nav>
-      <ul
-        className="pagination"
-        style={{ justifyContent: "center", marginTop: 20 }}
-      >
-        {pageNumbers.map((number) => (
-          <li key={number} className={"page-item"}>
-            <a
-              style={{ color: "black" }}
-              href="!#"
-              className="page-link"
-              onClick={() => paginate(number)}
-            >
-              {number}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </nav>
   );
 }
 
