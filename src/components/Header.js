@@ -1,14 +1,26 @@
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
+import { faVolumeHigh, faVolumeMute } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export function Header() {
+export function Header({ controlMusic, music }) {
   return (
     <header className="header">
       <div>
         <img src="/pokeball2.png" alt="pokeball" className="header-img"></img>
       </div>
       <div className="header-links">
+        <button
+          onClick={controlMusic}
+          style={{ background: "none", border: "none", padding: 0 }}
+          value={music}
+        >
+          {music ? (
+            <FontAwesomeIcon className="header-music" icon={faVolumeHigh} />
+          ) : (
+            <FontAwesomeIcon className="header-music" icon={faVolumeMute} />
+          )}
+        </button>
         <a
           target="_blank"
           rel="noreferrer"

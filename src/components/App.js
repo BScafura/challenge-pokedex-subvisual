@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Pokemon } from "./Pokemon";
 import { Header } from "./Header";
 import { Title } from "./Title";
@@ -14,6 +14,9 @@ function App() {
   const [currentIndex, setCurrentIndex] = useState(0); // State to store the current index for filtering Pokemon
   const [currentPage, setCurrentPage] = useState(1); // State to store the current page for paginatio
   const [pokemonPerPage, setPokemonPerPage] = useState(30); // State to store the number of Pokémon per pages
+  const [music, setMusic] = useState(true); // Music state
+
+  const audioRef = useRef(null); // Use ref to persist the audio object
 
   const lastPokemonIndex = currentPage * pokemonPerPage;
   const firstPokemonIndex = lastPokemonIndex - pokemonPerPage;
@@ -23,6 +26,34 @@ function App() {
   );
 
   // Functions
+  // Function to play or pause music
+  function playMusic() {
+    if (music) {
+      if (audioRef.current) {
+        audioRef.current.play().catch((error) => {
+          console.error("Error playing audio:", error);
+        });
+      }
+    } else {
+      if (audioRef.current) {
+        audioRef.current.pause(); // Pause the audio
+      }
+    }
+  }
+
+  function controlMusic() {
+    setMusic((prevMusic) => {
+      const newMusicState = !prevMusic;
+      if (newMusicState) {
+        audioRef.current.play().catch((error) => {
+          console.error("Error playing audio:", error);
+        });
+      } else {
+        audioRef.current.pause();
+      }
+      return newMusicState;
+    });
+  }
 
   // Fetch a large list of Pokémon (names and URLs only)
   async function getAllPokemon() {
@@ -90,12 +121,35 @@ function App() {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   useEffect(() => {
+    audioRef.current = new Audio("/music.mp3"); // Initialize the audio object only once
+    audioRef.current.loop = true; // Set to loop the music
+
+    // Start playing music immediately if the initial state is true
+    if (music) {
+      audioRef.current.play().catch((error) => {
+        console.error("Error playing audio on mount:", error);
+      });
+    }
+
     getAllPokemon(); // Fetch the list of all Pokémon when the component mounts
+
+    // Clean up the audio when the component unmounts
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+    };
   }, []);
+
+  // Effect to handle changes in the music state
+  useEffect(() => {
+    playMusic(); // Play or pause music when the 'music' state changes
+  }, [music]);
 
   return (
     <div className="App">
-      <Header></Header>
+      <Header controlMusic={controlMusic} music={music}></Header>
       <Title></Title>
       {detailedPokemon ? ( // Conditionally render DetailedPokemon or the search interface
         <DetailedPokemon

@@ -27,8 +27,14 @@ body {
   font-size: 35px;
 }
 
+.header-music {
+  color: #4b4c4e;
+  font-size: 35px;
+  align-self: center;
+}
+
 .header-img {
-  height: 50px;
+  height: 47px;
 }
 
 .loader-wrapper {
