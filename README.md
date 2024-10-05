@@ -24,7 +24,7 @@ This project was developed using React, a powerful JavaScript library for buildi
 <div align="center">
 
 
-![search](https://github.com/user-attachments/assets/3e72a390-d083-480e-806d-d9fa28bc1268)
+![1](https://github.com/user-attachments/assets/0eafe272-8ac7-4d16-96a9-a7356a356a6a)
 
 
 </div>
@@ -35,7 +35,8 @@ This project was developed using React, a powerful JavaScript library for buildi
 
 <div align="center">
 
-![pokemoncard](https://github.com/user-attachments/assets/b9d9f65a-506a-4abe-b7b9-54740137d495)
+
+![2](https://github.com/user-attachments/assets/c5398789-2a14-4ef8-a5d5-297a446765d1)
 
 
 </div>
@@ -44,7 +45,8 @@ This project was developed using React, a powerful JavaScript library for buildi
 - **Discover New Species**: Use the navigation buttons to explore and discover more Pokémon species 🐵🐺🦁🐯🦊🐭🐮🐻🐨🐼🐸.
 <div align="center">
 
-![pokemoncard2](https://github.com/user-attachments/assets/c8d3e145-b7ee-46df-b3e7-b9d6b688ead6)
+ 
+ ![3](https://github.com/user-attachments/assets/f9a8ae7e-0667-4f5a-a89f-4f2f0ffb56e5)
 
 
 </div>
