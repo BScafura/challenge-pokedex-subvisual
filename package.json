@@ -1,5 +1,5 @@
 {
-  "name": "pokedex-subvisual",
+  "name": "challenge-pokedex-subvisual",
   "version": "0.1.0",
   "private": false,
   "homepage": "https://bscafura.github.io/challenge-pokedex-subvisual/",
@@ -21,6 +21,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "deploy": "gh-pages -d dist",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
