@@ -13,7 +13,7 @@ function App() {
   const [filteredPokemon, setFilteredPokemon] = useState([]); // State to store filtered Pokémon based on search
   const [detailedPokemon, setDetailedPokemon] = useState(null); // State to store more detailed Pokemon information
   const [currentIndex, setCurrentIndex] = useState(0); // State to store the current index for filtering Pokemon
-  const [currentPage, setCurrentPage] = useState(1); // State to store the current page for paginatio
+  const [currentPage, setCurrentPage] = useState(1); // State to store the current page for pagination
   const [currentGlobalIndex, setCurrentGlobalIndex] = useState(0);
   const [pokemonPerPage, setPokemonPerPage] = useState(30); // State to store the number of Pokémon per pages
   const [music, setMusic] = useState(true); // Music state
