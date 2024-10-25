@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/challenge-pokedex-subvisual/static/css/main.5ed3785a.css",
-    "main.js": "/challenge-pokedex-subvisual/static/js/main.f83f08c2.js",
+    "main.js": "/challenge-pokedex-subvisual/static/js/main.6e76c884.js",
     "static/media/cardbackground.jpg": "/challenge-pokedex-subvisual/static/media/cardbackground.e43a4968ead6331e777d.jpg",
     "index.html": "/challenge-pokedex-subvisual/index.html",
     "main.5ed3785a.css.map": "/challenge-pokedex-subvisual/static/css/main.5ed3785a.css.map",
-    "main.f83f08c2.js.map": "/challenge-pokedex-subvisual/static/js/main.f83f08c2.js.map"
+    "main.6e76c884.js.map": "/challenge-pokedex-subvisual/static/js/main.6e76c884.js.map"
   },
   "entrypoints": [
     "static/css/main.5ed3785a.css",
-    "static/js/main.f83f08c2.js"
+    "static/js/main.6e76c884.js"
   ]
 }
