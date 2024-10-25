@@ -7,7 +7,11 @@ export function Header({ controlMusic, music }) {
   return (
     <header className="header">
       <div>
-        <img src="/pokeball2.png" alt="pokeball" className="header-img"></img>
+        <img
+          src={process.env.PUBLIC_URL + "/pokeball2.png"}
+          alt="pokeball"
+          className="header-img"
+        ></img>
       </div>
       <div className="header-links">
         <button

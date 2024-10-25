@@ -148,7 +148,7 @@ function App() {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   useEffect(() => {
-    audioRef.current = new Audio("/music.mp3"); // Initialize the audio object only once
+    audioRef.current = new Audio(process.env.PUBLIC_URL + "/music.mp3"); // Initialize the audio object only once
     audioRef.current.loop = true; // Set to loop the music
 
     // Start playing music immediately if the initial state is true
